@@ -46,23 +46,22 @@ export default function ContactForm() {
 
   const currentUnits = formData.project ? unitsByProject[formData.project] || [] : []
 
-  const inputClass = "w-full bg-[#111118] border border-[#2a2a38] text-[#f0ece4] px-4 py-3.5 text-sm text-right focus:outline-none focus:border-[#c9a84c] transition-colors placeholder:text-[#8a8490]"
-
   return (
-    <form onSubmit={handleSubmit} className="space-y-3">
+    <form onSubmit={handleSubmit} className="space-y-4">
       <select value={formData.project}
         onChange={(e) => setFormData({ ...formData, project: e.target.value, unitType: "" })}
-        required className={inputClass}>
+        required
+        className="w-full border border-border bg-background text-foreground px-4 py-3 text-right focus:outline-none focus:border-primary">
         <option value="">اختر المشروع *</option>
-        <option value="seashore">Seashore — الساحل الشمالي</option>
-        <option value="central">Hyde Park Central — التجمع السادس</option>
-        <option value="fifth">Hyde Park New Cairo — التجمع الخامس</option>
+        <option value="seashore">Seashore - الساحل الشمالي</option>
+        <option value="central">Hyde Park Central - التجمع السادس</option>
+        <option value="fifth">Hyde Park New Cairo - التجمع الخامس</option>
       </select>
 
       {currentUnits.length > 0 && (
         <select value={formData.unitType}
           onChange={(e) => setFormData({ ...formData, unitType: e.target.value })}
-          className={inputClass}>
+          className="w-full border border-border bg-background text-foreground px-4 py-3 text-right focus:outline-none focus:border-primary">
           <option value="">نوع الوحدة (اختياري)</option>
           {currentUnits.map((u) => <option key={u} value={u}>{u}</option>)}
         </select>
@@ -70,14 +69,16 @@ export default function ContactForm() {
 
       <input type="text" placeholder="الاسم الكامل *"
         value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-        required className={inputClass} />
+        required
+        className="w-full border border-border bg-background text-foreground px-4 py-3 text-right focus:outline-none focus:border-primary placeholder:text-muted-foreground" />
 
       <input type="tel" placeholder="رقم الهاتف *"
         value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-        required dir="ltr" className={inputClass} />
+        required dir="ltr"
+        className="w-full border border-border bg-background text-foreground px-4 py-3 text-right focus:outline-none focus:border-primary placeholder:text-muted-foreground" />
 
       <button type="submit" disabled={loading}
-        className="w-full bg-[#c9a84c] text-black py-4 font-bold text-sm tracking-widest uppercase hover:bg-[#f5d98b] transition-all duration-300 disabled:opacity-50">
+        className="w-full bg-primary text-white py-4 font-semibold text-base hover:bg-primary/90 transition-colors disabled:opacity-70">
         {loading ? "جاري الإرسال..." : "سجل اهتمامك"}
       </button>
     </form>
