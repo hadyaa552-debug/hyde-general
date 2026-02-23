@@ -4,52 +4,69 @@ import ProjectSeashore from "@/components/project-seashore"
 import ProjectCentral from "@/components/project-central"
 import ProjectFifth from "@/components/project-fifth"
 import ContactForm from "@/components/contact-form"
-import AboutDeveloper from "@/components/about-developer"
 import WhatsAppWidget from "@/components/whatsapp-widget"
 import MobileBottomBar from "@/components/mobile-bottom-bar"
-import Footer from "@/components/footer"
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-[#0a0a0f]">
       <Header />
       <Hero />
       <ProjectSeashore />
       <ProjectCentral />
       <ProjectFifth />
 
-      {/* Contact Section */}
-      <section id="contact" className="py-20 lg:py-32 bg-muted/30">
-        <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
-          <div className="text-center mb-12">
-            <p className="text-primary font-semibold tracking-widest uppercase text-sm mb-3">تواصل معنا</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">نحن هنا لمساعدتك</h2>
-            <p className="text-muted-foreground">سجل اهتمامك وسيتواصل معك فريقنا في أقرب وقت</p>
+      {/* Contact */}
+      <section id="contact" className="bg-[#0d0d14] py-24 lg:py-32">
+        <div className="container mx-auto px-6 lg:px-12 max-w-6xl">
+
+          {/* Header */}
+          <div className="text-center mb-16">
+            <div className="flex items-center justify-center gap-4 mb-6">
+              <span className="gold-line" />
+              <span className="text-[#c9a84c] text-xs tracking-[0.3em] uppercase">تواصل معنا</span>
+              <span className="gold-line" />
+            </div>
+            <h2 className="font-display text-4xl lg:text-6xl font-bold text-white mb-4">سجّل اهتمامك</h2>
+            <p className="text-[#8a8490]">سيتواصل معك فريق المبيعات خلال 24 ساعة</p>
           </div>
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            <div className="text-right space-y-6">
-              <div>
-                <p className="text-muted-foreground text-sm mb-1">هاتف</p>
-                <a href="tel:+201008900076" className="text-primary text-2xl font-bold hover:underline">
-                  0100 8900 076
-                </a>
-              </div>
-              <div className="space-y-3">
-                {[
-                  { name: "Seashore", location: "رأس الحكمة - الساحل الشمالي" },
-                  { name: "Hyde Park Central", location: "التجمع السادس - نيو كايرو" },
-                  { name: "Hyde Park New Cairo", location: "التجمع الخامس - شارع التسعين" },
-                ].map((p, i) => (
-                  <div key={i} className="flex items-center gap-3 py-3 border-b border-border">
-                    <div>
-                      <p className="font-semibold text-foreground text-sm">{p.name}</p>
-                      <p className="text-xs text-muted-foreground">{p.location}</p>
-                    </div>
-                    <div className="w-2 h-2 bg-primary flex-shrink-0 mr-auto" />
-                  </div>
-                ))}
+
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+
+            {/* Info */}
+            <div className="space-y-8">
+              <div className="border border-[#2a2a38] p-8 space-y-6">
+                <div>
+                  <p className="text-[#c9a84c] text-xs tracking-[0.25em] uppercase mb-2">هاتف مباشر</p>
+                  <a href="tel:+201008900076"
+                    className="font-display text-3xl text-white hover:text-[#c9a84c] transition-colors">
+                    0100 8900 076
+                  </a>
+                </div>
+                <div className="h-px bg-[#2a2a38]" />
+                <div className="space-y-4">
+                  {[
+                    { name: "Seashore", loc: "رأس الحكمة — الساحل الشمالي", href: "#seashore" },
+                    { name: "Hyde Park Central", loc: "التجمع السادس — نيو كايرو", href: "#central" },
+                    { name: "Hyde Park New Cairo", loc: "التجمع الخامس — شارع التسعين", href: "#fifth" },
+                  ].map((p, i) => (
+                    <a key={i} href={p.href}
+                      className="flex items-center justify-between group hover:bg-[#1a1a24] px-3 py-2 transition-colors">
+                      <div className="flex items-center gap-3">
+                        <div className="w-1.5 h-1.5 bg-[#c9a84c]" />
+                        <div>
+                          <p className="text-[#f0ece4] text-sm font-semibold group-hover:text-[#c9a84c] transition-colors">{p.name}</p>
+                          <p className="text-[#8a8490] text-xs">{p.loc}</p>
+                        </div>
+                      </div>
+                      <span className="text-[#c9a84c]/40 group-hover:text-[#c9a84c] transition-colors text-xs">←</span>
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
+
+            {/* Form */}
             <div>
               <ContactForm />
             </div>
@@ -57,8 +74,20 @@ export default function Home() {
         </div>
       </section>
 
-      <AboutDeveloper />
-      <Footer />
+      {/* Footer */}
+      <footer className="bg-[#0a0a0f] border-t border-[#2a2a38] py-8 pb-24 lg:pb-8">
+        <div className="container mx-auto px-6 lg:px-12 flex flex-col lg:flex-row items-center justify-between gap-4">
+          <p className="text-[#8a8490] text-xs tracking-wide">
+            © 2025 Hyde Park Developments — جميع الحقوق محفوظة
+          </p>
+          <div className="flex items-center gap-4">
+            <span className="gold-line" style={{width: "30px"}} />
+            <span className="text-[#c9a84c] text-xs tracking-widest">HYDE PARK</span>
+            <span className="gold-line" style={{width: "30px"}} />
+          </div>
+        </div>
+      </footer>
+
       <WhatsAppWidget />
       <MobileBottomBar />
     </main>
